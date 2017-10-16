@@ -1,10 +1,18 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
   selector: '[appMiDirective]'
 })
 export class MiDirectiveDirective {
 
-  constructor() { }
+  @Input() id: string;
+
+  constructor(private el: ElementRef) {
+    el.nativeElement.style.backgroundColor = 'yellow';
+  }
+
+  cambiarColor(color: string): void {
+    this.el.nativeElement.style.backgroundColor = color;
+  }
 
 }
